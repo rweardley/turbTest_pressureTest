@@ -1,0 +1,15 @@
+# ignore all caches, output files and binary files:
+*.cache
+*.vscode
+*.f?????
+*.nek5000
+*.exo
+*.re2
+*.tgz
+*.a
+*.so
+*.tar.gz
+*.tar
+*.gz
+
+turbTestOut/

@@ -1,0 +1,42 @@
+//
+// nekRS User Defined File
+//
+#include <math.h>
+#include "udf.hpp"
+
+void UDF_ExecuteStep(nrs_t *nrs, dfloat time, int tstep)
+{
+}
+
+void UDF_LoadKernels(occa::properties& kernelInfo)
+{
+}
+
+void UDF_Setup0(MPI_Comm comm, setupAide &options)
+{
+}
+
+// set initial conditions (velocity and pressure)
+void UDF_Setup(nrs_t* nrs)
+{
+	mesh_t* mesh = nrs->meshV;
+	int num_quadrature_points = mesh->Np * mesh->Nelements;
+
+	const double r_pipe = 0.01475;		// pipe radius, m
+	const double c_x0 = 0;			// inlet x centre position, m
+	const double c_y0 = 0;			// inlet y centre position, m
+
+	for (int n = 0; n < num_quadrature_points; n++) {
+		float x = mesh->x[n];
+		float y = mesh->y[n];
+		float z = mesh->z[n];
+
+		nrs->U[n + 0 * nrs->fieldOffset] = 0;
+		nrs->U[n + 1 * nrs->fieldOffset] = 0;
+		nrs->U[n + 2 * nrs->fieldOffset] = -1.0e-15;
+
+		nrs->P[n + 0 * nrs->fieldOffset] = 1.0e5;
+	}
+}
+
+

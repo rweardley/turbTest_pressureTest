@@ -1,0 +1,30 @@
+[GENERAL]
+# verbose = true				# default: false
+polynomialOrder = 7			# Order of polynomial trial functions for FE solution (?). Results in N+1 basis functions per spatial dimension.
+
+stopAt = numSteps			# end after <numSteps> iterations
+numSteps = 30000				# number of iterations
+
+dt = 7e-5
+timeStepper = tombo2			#default: tombo2
+subCyclingSteps = 0			# subcycling steps allow for greater CFL: 0 (CFL<=0.5), 1 (0.5<CFL<=2), 2 (2<CFL<=4), 3 (4<CFL<=6) etc... every 2 CFL units requires extra subcycling step
+
+writeControl = steps
+writeInterval = 1500
+
+[MESH]
+solver = none				# no moving mesh; could have ALE or user-specified
+file = "turbTest_sweep_small.re2"
+
+connectivityTol = 0.02
+
+[PRESSURE]
+residualTol = 1e-04
+
+[VELOCITY]
+boundaryTypeMap = inlet, outlet, wall
+viscosity = -1000.			# dynamic viscosity
+density = 997.				# density of water
+residualTol = 1e-06
+
+[CASEDATA]
