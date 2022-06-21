@@ -1,0 +1,1879 @@
+No protocol specified
+                 __    ____  _____
+   ____   ___   / /__ / __ \/ ___/
+  / __ \ / _ \ / //_// /_/ /\__ \ 
+ / / / //  __// ,<  / _, _/___/ / 
+/_/ /_/ \___//_/|_|/_/ |_|/____/  v21.1 (no sha)
+
+COPYRIGHT (c) 2019-2021 UCHICAGO ARGONNE, LLC
+
+MPI tasks: 1
+
+reading par file ...
+
+using NEKRS_HOME: /home/user/NekRS/21.1/nekRS
+using NEKRS_CACHE_DIR: /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache
+using OCCA_CACHE_DIR: /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/
+
+jit-compiling for >=1 MPI tasks ...
+
+Initializing device 
+active occa mode: CUDA
+
+building udf ... 
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working CXX compiler: /usr/bin/mpic++
+-- Check for working CXX compiler: /usr/bin/mpic++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/udf
+[35m[1mScanning dependencies of target UDF[0m
+[100%] Built target UDF
+done (0.873796s)
+building nek for lx1=8, lelt=3402 and lelg=3402 ...
+/home/user/NekRS/21.1/nekRS/nek5000/core/byte.c: In function ‘byte_read_’:
+/home/user/NekRS/21.1/nekRS/nek5000/core/byte.c:225:6: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+  225 |      fread(buf,sizeof(float),*n,fp);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/user/NekRS/21.1/nekRS/nek5000/core/chelpers.c: In function ‘set_stdout_’:
+/home/user/NekRS/21.1/nekRS/nek5000/core/chelpers.c:72:5: warning: ignoring return value of ‘freopen’, declared with attribute warn_unused_result [-Wunused-result]
+   72 |     freopen(logfile, "w+", stdout);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/user/NekRS/21.1/nekRS/nek5000/core/3rd_party/iniparser.c: In function ‘iniparser_load’:
+/home/user/NekRS/21.1/nekRS/nek5000/core/3rd_party/iniparser.c:718:32: warning: ‘__builtin___sprintf_chk’ may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  718 |             sprintf(tmp, "%s:%s", section, key);
+      |                                ^
+In file included from /usr/include/stdio.h:867,
+                 from /home/user/NekRS/21.1/nekRS/nek5000/core/3rd_party/iniparser.h:16,
+                 from /home/user/NekRS/21.1/nekRS/nek5000/core/3rd_party/iniparser.c:11:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: note: ‘__builtin___sprintf_chk’ output between 2 and 2050 bytes into a destination of size 2049
+   36 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   37 |       __bos (__s), __fmt, __va_arg_pack ());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+done
+done (24.0898s)
+
+loading udf kernels ... done (5.3379e-05s)
+
+loading kernels ... Compiling [gatherScatter_floatAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5f7ba9d999a026c2/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5f7ba9d999a026c2/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_gatherScatter_longMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_longMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_intMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_intMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_floatMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_floatMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_longMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_longMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_intMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_intMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_floatMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_floatMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_longMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_longMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_intMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_intMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_doubleMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_doubleMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_floatMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_floatMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_longAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_longAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 50 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_intAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_intAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 50 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatter_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatter_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5f7ba9d999a026c2/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5f7ba9d999a026c2/binary
+Loading cached [gatherScatter_floatMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_floatMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_floatMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_doubleMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_intAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_intMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_intMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_intMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_longAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_longMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_longMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Loading cached [gatherScatter_longMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatter.okl] in [5f7ba9d999a026c2/binary]
+Compiling [gatherScatterVec_floatAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7355b3da4156e4de/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7355b3da4156e4de/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_longMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_longMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_intMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_intMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_floatMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_floatMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_longMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_longMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_intMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_intMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_floatMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_floatMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_longMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_longMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_intMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_intMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_doubleMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_doubleMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_floatMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_floatMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_longAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_longAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_intAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_intAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 50 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterVec_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterVec_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7355b3da4156e4de/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7355b3da4156e4de/binary
+Loading cached [gatherScatterVec_floatMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_floatMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_floatMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_doubleMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_intAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_intMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_intMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_intMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_longAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_longMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_longMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Loading cached [gatherScatterVec_longMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterVec.okl] in [7355b3da4156e4de/binary]
+Compiling [gatherScatterMany_floatAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6ff2b1dcc1e71131/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6ff2b1dcc1e71131/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_longMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_longMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_intMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_intMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_floatMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_floatMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_longMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_longMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_intMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_intMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_floatMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_floatMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_longMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_longMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_intMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_intMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_doubleMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_doubleMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_floatMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_floatMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_longAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_longAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_intAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_intAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 50 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherScatterMany_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherScatterMany_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6ff2b1dcc1e71131/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6ff2b1dcc1e71131/binary
+Loading cached [gatherScatterMany_floatMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_floatMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_floatMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_doubleMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_intAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_intMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_intMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_intMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_longAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_longMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_longMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Loading cached [gatherScatterMany_longMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherScatterMany.okl] in [6ff2b1dcc1e71131/binary]
+Compiling [gather_floatAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/57f1c4385f11b1ab/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/57f1c4385f11b1ab/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_gather_longMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_longMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_intMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_intMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_floatMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_floatMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_longMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_longMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_intMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_intMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_floatMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_floatMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_longMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_longMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_intMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_intMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_doubleMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_doubleMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_floatMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_floatMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_longAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_longAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_intAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_intAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 45 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gather_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gather_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 43 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/57f1c4385f11b1ab/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/57f1c4385f11b1ab/binary
+Loading cached [gather_floatMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_floatMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_floatMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_doubleMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_intAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_intMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_intMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_intMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_longAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_longMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_longMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Loading cached [gather_longMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gather.okl] in [57f1c4385f11b1ab/binary]
+Compiling [gatherVec_floatAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a31ff695a740473e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a31ff695a740473e/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_gatherVec_longMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_longMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_intMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_intMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_floatMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_floatMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_longMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_longMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_intMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_intMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_floatMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_floatMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_longMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_longMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_intMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_intMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_doubleMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_doubleMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_floatMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_floatMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_longAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_longAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_intAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_intAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherVec_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherVec_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a31ff695a740473e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a31ff695a740473e/binary
+Loading cached [gatherVec_floatMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_floatMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_floatMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_doubleMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_intAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_intMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_intMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_intMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_longAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_longMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_longMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Loading cached [gatherVec_longMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherVec.okl] in [a31ff695a740473e/binary]
+Compiling [gatherMany_floatAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bb07958e47fef03b/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bb07958e47fef03b/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_gatherMany_longMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_longMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_intMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_intMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_floatMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_floatMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_longMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_longMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_intMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_intMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_floatMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_floatMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_longMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_longMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_intMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_intMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_doubleMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_doubleMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_floatMul_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_floatMul_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_longAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_longAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_intAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_intAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gatherMany_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gatherMany_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 44 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bb07958e47fef03b/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bb07958e47fef03b/binary
+Loading cached [gatherMany_floatMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_floatMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_floatMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_doubleMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_intAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_intMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_intMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_intMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_longAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_longMul] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_longMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Loading cached [gatherMany_longMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/gatherMany.okl] in [bb07958e47fef03b/binary]
+Compiling [scatter_float]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9df621570b50d580/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9df621570b50d580/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_scatter_long_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatter_long_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatter_int_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatter_int_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatter_double_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatter_double_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatter_float_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatter_float_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9df621570b50d580/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9df621570b50d580/binary
+Loading cached [scatter_double] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatter.okl] in [9df621570b50d580/binary]
+Loading cached [scatter_int] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatter.okl] in [9df621570b50d580/binary]
+Loading cached [scatter_long] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatter.okl] in [9df621570b50d580/binary]
+Compiling [scatterVec_float]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd1920a69b0a3191/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd1920a69b0a3191/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_scatterVec_long_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterVec_long_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatterVec_int_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterVec_int_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatterVec_double_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterVec_double_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatterVec_float_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterVec_float_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd1920a69b0a3191/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd1920a69b0a3191/binary
+Loading cached [scatterVec_double] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatterVec.okl] in [dd1920a69b0a3191/binary]
+Loading cached [scatterVec_int] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatterVec.okl] in [dd1920a69b0a3191/binary]
+Loading cached [scatterVec_long] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatterVec.okl] in [dd1920a69b0a3191/binary]
+Compiling [scatterMany_float]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/cd8d94451bf38b10/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/cd8d94451bf38b10/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_scatterMany_long_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterMany_long_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatterMany_int_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterMany_int_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatterMany_double_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterMany_double_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scatterMany_float_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scatterMany_float_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/cd8d94451bf38b10/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/cd8d94451bf38b10/binary
+Loading cached [scatterMany_double] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatterMany.okl] in [cd8d94451bf38b10/binary]
+Loading cached [scatterMany_int] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatterMany.okl] in [cd8d94451bf38b10/binary]
+Loading cached [scatterMany_long] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/scatterMany.okl] in [cd8d94451bf38b10/binary]
+Compiling [packBuf_floatAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c21b2228b2bc9588/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c21b2228b2bc9588/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_unpackBuf_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_unpackBuf_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_unpackBuf_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_unpackBuf_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_unpackBuf_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_unpackBuf_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_packBuf_doubleMax_0' for 'sm_75'
+ptxas info    : Function properties for _occa_packBuf_doubleMax_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_packBuf_doubleMin_0' for 'sm_75'
+ptxas info    : Function properties for _occa_packBuf_doubleMin_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_packBuf_doubleAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_packBuf_doubleAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 60 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_unpackBuf_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_unpackBuf_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 48 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_packBuf_floatAdd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_packBuf_floatAdd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c21b2228b2bc9588/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c21b2228b2bc9588/binary
+Loading cached [unpackBuf_floatAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs.okl] in [c21b2228b2bc9588/binary]
+Loading cached [packBuf_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs.okl] in [c21b2228b2bc9588/binary]
+Loading cached [unpackBuf_doubleAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs.okl] in [c21b2228b2bc9588/binary]
+Loading cached [packBuf_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs.okl] in [c21b2228b2bc9588/binary]
+Loading cached [unpackBuf_doubleMin] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs.okl] in [c21b2228b2bc9588/binary]
+Loading cached [packBuf_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs.okl] in [c21b2228b2bc9588/binary]
+Loading cached [unpackBuf_doubleMax] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs.okl] in [c21b2228b2bc9588/binary]
+Compiling [packBuf_halfAdd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/93eb5034f7f8fa22/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/93eb5034f7f8fa22/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function 'unpackBuf_halfAdd' for 'sm_75'
+ptxas info    : Function properties for unpackBuf_halfAdd
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function 'packBuf_halfAdd' for 'sm_75'
+ptxas info    : Function properties for packBuf_halfAdd
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 50 registers, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/93eb5034f7f8fa22/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/93eb5034f7f8fa22/binary
+Loading cached [unpackBuf_halfAdd] from [/home/user/NekRS/21.1/nekRS/gatherScatter/okl/oogs-half.cu] in [93eb5034f7f8fa22/binary]
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2cb81f845a90979d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2cb81f845a90979d/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2cb81f845a90979d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2cb81f845a90979d/binary
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c90e33f50d48f508/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c90e33f50d48f508/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c90e33f50d48f508/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c90e33f50d48f508/binary
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9626a32484229415/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9626a32484229415/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_1pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_1pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_1pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_1pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9626a32484229415/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9626a32484229415/binary
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1baf2fe28347359c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1baf2fe28347359c/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1baf2fe28347359c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1baf2fe28347359c/binary
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/70b9fe0fea2c3af9/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/70b9fe0fea2c3af9/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/70b9fe0fea2c3af9/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/70b9fe0fea2c3af9/binary
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0e6c2cab1656154d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0e6c2cab1656154d/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0e6c2cab1656154d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0e6c2cab1656154d/binary
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d13752a0a745e1ed/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d13752a0a745e1ed/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_7pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_7pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_7pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_7pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d13752a0a745e1ed/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d13752a0a745e1ed/binary
+Compiling [mask]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d78667b89723f8cc/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d78667b89723f8cc/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_maskCopy_0' for 'sm_75'
+ptxas info    : Function properties for _occa_maskCopy_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_mask_0' for 'sm_75'
+ptxas info    : Function properties for _occa_mask_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d78667b89723f8cc/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d78667b89723f8cc/binary
+Loading cached [maskCopy] from [/home/user/NekRS/21.1/nekRS/okl/core/mask.okl] in [d78667b89723f8cc/binary]
+Compiling [nStagesSumVector]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/88083c37b4d837b2/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/88083c37b4d837b2/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_nStagesSumVector_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nStagesSumVector_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_nStagesSum3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nStagesSum3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_nStagesSum_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nStagesSum_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/88083c37b4d837b2/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/88083c37b4d837b2/binary
+Compiling [nStagesSum3]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c47d934bcabc79c5/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c47d934bcabc79c5/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_nStagesSumVector_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nStagesSumVector_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_nStagesSum3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nStagesSum3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_nStagesSum_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nStagesSum_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c47d934bcabc79c5/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c47d934bcabc79c5/binary
+Compiling [setEllipticCoeff]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/870faf7ecf28030c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/870faf7ecf28030c/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_setEllipticCoeffPressure_0' for 'sm_75'
+ptxas info    : Function properties for _occa_setEllipticCoeffPressure_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 13 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_setEllipticCoeff_0' for 'sm_75'
+ptxas info    : Function properties for _occa_setEllipticCoeff_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/870faf7ecf28030c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/870faf7ecf28030c/binary
+Loading cached [setEllipticCoeffPressure] from [/home/user/NekRS/21.1/nekRS/okl/core/setEllipticCoeff.okl] in [870faf7ecf28030c/binary]
+Compiling [updateChebyshevSolutionVec]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d15bbf51575bd359/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d15bbf51575bd359/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_updateIntermediateSolutionVec_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateIntermediateSolutionVec_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 18 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_updateChebyshevSolutionVec_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateChebyshevSolutionVec_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 18 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_updateSmoothedSolutionVec_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateSmoothedSolutionVec_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d15bbf51575bd359/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d15bbf51575bd359/binary
+Compiling [updateChebyshevSolutionVec]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/03faa346d95413cd/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/03faa346d95413cd/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_updateIntermediateSolutionVec_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateIntermediateSolutionVec_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 18 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_updateChebyshevSolutionVec_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateChebyshevSolutionVec_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 18 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_updateSmoothedSolutionVec_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateSmoothedSolutionVec_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/03faa346d95413cd/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/03faa346d95413cd/binary
+Compiling [updateChebyshevSolutionVec]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1639a00f4c45331c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1639a00f4c45331c/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_updateIntermediateSolutionVec_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateIntermediateSolutionVec_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 18 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_updateChebyshevSolutionVec_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateChebyshevSolutionVec_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 18 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_updateSmoothedSolutionVec_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updateSmoothedSolutionVec_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1639a00f4c45331c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1639a00f4c45331c/binary
+Loading cached [updateIntermediateSolutionVec] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/chebyshev.okl] in [d15bbf51575bd359/binary]
+Loading cached [updateIntermediateSolutionVec] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/chebyshev.okl] in [03faa346d95413cd/binary]
+Loading cached [updateIntermediateSolutionVec] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/chebyshev.okl] in [1639a00f4c45331c/binary]
+Loading cached [updateSmoothedSolutionVec] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/chebyshev.okl] in [d15bbf51575bd359/binary]
+Loading cached [updateSmoothedSolutionVec] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/chebyshev.okl] in [03faa346d95413cd/binary]
+Loading cached [updateSmoothedSolutionVec] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/chebyshev.okl] in [1639a00f4c45331c/binary]
+Compiling [ellipticAxHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1c67ffe7cc043d07/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1c67ffe7cc043d07/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxTrilinearHex3D_v0_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxTrilinearHex3D_v0_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 110 registers, 352 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxHex3D_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxHex3D_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 82 registers, 128 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxVarHex3D_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxVarHex3D_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, 128 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxVarHex3D_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxVarHex3D_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, 128 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxHex3D_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxHex3D_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 82 registers, 128 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1c67ffe7cc043d07/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/1c67ffe7cc043d07/binary
+Compiling [ellipticAxHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/093ca10e31a158fe/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/093ca10e31a158fe/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxTrilinearHex3D_v0_1pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxTrilinearHex3D_v0_1pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 53 registers, 176 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxHex3D_1pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxHex3D_1pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 47 registers, 64 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxVarHex3D_1pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxVarHex3D_1pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 50 registers, 64 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxVarHex3D_1pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxVarHex3D_1pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 50 registers, 64 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxHex3D_1pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxHex3D_1pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 47 registers, 64 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/093ca10e31a158fe/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/093ca10e31a158fe/binary
+Compiling [ellipticAxHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/8ed7a4d6021e8d36/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/8ed7a4d6021e8d36/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxTrilinearHex3D_v0_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxTrilinearHex3D_v0_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 114 registers, 768 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxHex3D_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxHex3D_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 512 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxVarHex3D_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxVarHex3D_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 134 registers, 512 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxVarHex3D_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxVarHex3D_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 126 registers, 512 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxHex3D_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxHex3D_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 512 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/8ed7a4d6021e8d36/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/8ed7a4d6021e8d36/binary
+Compiling [ellipticAxHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6f4264ffc7c701bf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6f4264ffc7c701bf/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxTrilinearHex3D_v0_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxTrilinearHex3D_v0_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 384 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxHex3D_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxHex3D_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 120 registers, 256 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxVarHex3D_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxVarHex3D_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 126 registers, 256 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxVarHex3D_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxVarHex3D_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 123 registers, 256 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxHex3D_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxHex3D_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 120 registers, 256 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6f4264ffc7c701bf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6f4264ffc7c701bf/binary
+Compiling [ellipticAxHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/b1edec0df3473a5a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/b1edec0df3473a5a/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxTrilinearHex3D_v0_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxTrilinearHex3D_v0_7_0
+    128 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 120 registers, 2368 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxHex3D_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxHex3D_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 68 registers, 2048 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxVarHex3D_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxVarHex3D_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 70 registers, 2048 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxVarHex3D_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxVarHex3D_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 72 registers, 2048 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxHex3D_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxHex3D_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 68 registers, 2048 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/b1edec0df3473a5a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/b1edec0df3473a5a/binary
+Compiling [ellipticAxHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/240366121658c1ab/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/240366121658c1ab/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxTrilinearHex3D_v0_7pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxTrilinearHex3D_v0_7pfloat_0
+    64 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 1184 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxHex3D_7pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxHex3D_7pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 71 registers, 1024 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxVarHex3D_7pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxVarHex3D_7pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 72 registers, 1024 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxVarHex3D_7pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxVarHex3D_7pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 73 registers, 1024 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxHex3D_7pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxHex3D_7pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 71 registers, 1024 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/240366121658c1ab/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/240366121658c1ab/binary
+Compiling [ellipticAxVarHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9339df22bf81b88a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9339df22bf81b88a/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxTrilinearHex3D_v0_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxTrilinearHex3D_v0_0
+    128 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 120 registers, 2368 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 68 registers, 2048 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticPartialAxVarHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPartialAxVarHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 70 registers, 2048 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxVarHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxVarHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 72 registers, 2048 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticAxHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticAxHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 68 registers, 2048 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9339df22bf81b88a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9339df22bf81b88a/binary
+Loading cached [ellipticPartialAxHex3D] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticAxHex3D.okl] in [1c67ffe7cc043d07/binary]
+Loading cached [ellipticPartialAxHex3D] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticAxHex3D.okl] in [093ca10e31a158fe/binary]
+Loading cached [ellipticPartialAxHex3D] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticAxHex3D.okl] in [8ed7a4d6021e8d36/binary]
+Loading cached [ellipticPartialAxHex3D] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticAxHex3D.okl] in [6f4264ffc7c701bf/binary]
+Loading cached [ellipticPartialAxHex3D] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticAxHex3D.okl] in [b1edec0df3473a5a/binary]
+Loading cached [ellipticPartialAxHex3D] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticAxHex3D.okl] in [240366121658c1ab/binary]
+Loading cached [ellipticPartialAxVarHex3D] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticAxHex3D.okl] in [9339df22bf81b88a/binary]
+Compiling [ellipticBlockAxVarHex3D_N3]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/37dd0a8dc364067e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/37dd0a8dc364067e/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticStressPartialAxHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticStressPartialAxHex3D_0
+    384 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 5120 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticStressAxHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticStressAxHex3D_0
+    384 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 5120 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticStressPartialAxVarHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticStressPartialAxVarHex3D_0
+    384 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 5120 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticStressAxVarHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticStressAxVarHex3D_0
+    384 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 5120 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticBlockPartialAxVarHex3D_N3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockPartialAxVarHex3D_N3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 178 registers, 5120 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticBlockAxVarHex3D_N3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockAxVarHex3D_N3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 178 registers, 5120 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticBlockPartialAxHex3D_N3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockPartialAxHex3D_N3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 176 registers, 5120 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ellipticBlockAxHex3D_N3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockAxHex3D_N3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 176 registers, 5120 bytes smem, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/37dd0a8dc364067e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/37dd0a8dc364067e/binary
+Loading cached [ellipticBlockPartialAxVarHex3D_N3] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticBlockAxHex3D.okl] in [37dd0a8dc364067e/binary]
+Compiling [ellipticBlockBuildDiagonalHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd5a341aeb75e325/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd5a341aeb75e325/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticBlockBuildDiagonalHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockBuildDiagonalHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 70 registers, 2048 bytes smem, 424 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd5a341aeb75e325/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd5a341aeb75e325/binary
+Compiling [ellipticBlockBuildDiagonalHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9faa9c84398ee8da/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9faa9c84398ee8da/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticBlockBuildDiagonalHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockBuildDiagonalHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 3072 bytes smem, 424 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9faa9c84398ee8da/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9faa9c84398ee8da/binary
+Compiling [fusedResidualAndNorm]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/55af7aec5d03a028/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/55af7aec5d03a028/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_fusedResidualAndNorm_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fusedResidualAndNorm_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 18 registers, 2048 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/55af7aec5d03a028/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/55af7aec5d03a028/binary
+Compiling [gramSchmidtOrthogonalization]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c202a513c4c05c58/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c202a513c4c05c58/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_gramSchmidtOrthogonalization_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gramSchmidtOrthogonalization_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 2048 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c202a513c4c05c58/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c202a513c4c05c58/binary
+Compiling [adyManyPfloat]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/95926f7df12758bf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/95926f7df12758bf/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_adyManyPfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_adyManyPfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 21 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axmyzManyPfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axmyzManyPfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 29 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/95926f7df12758bf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/95926f7df12758bf/binary
+Loading cached [axmyzManyPfloat] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticJacobi.okl] in [95926f7df12758bf/binary]
+Compiling [copyDfloatToPfloat]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7ac6b01bcc4b8f09/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7ac6b01bcc4b8f09/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_dotMultiply_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_dotMultiply_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_copyPfloatToDfloat_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_copyPfloatToDfloat_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_copyDfloatToPfloat_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_copyDfloatToPfloat_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_fusedCopyDfloatToPfloat_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fusedCopyDfloatToPfloat_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scaledAdd_1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scaledAdd_1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7ac6b01bcc4b8f09/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7ac6b01bcc4b8f09/binary
+Compiling [copyDfloatToPfloat]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a867ac0c42444f9d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a867ac0c42444f9d/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_dotMultiply_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_dotMultiply_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_copyPfloatToDfloat_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_copyPfloatToDfloat_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_copyDfloatToPfloat_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_copyDfloatToPfloat_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_fusedCopyDfloatToPfloat_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fusedCopyDfloatToPfloat_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scaledAdd_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scaledAdd_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a867ac0c42444f9d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a867ac0c42444f9d/binary
+Compiling [copyDfloatToPfloat]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bda4af45d7556f4c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bda4af45d7556f4c/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_dotMultiply_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_dotMultiply_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_copyPfloatToDfloat_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_copyPfloatToDfloat_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_copyDfloatToPfloat_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_copyDfloatToPfloat_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_fusedCopyDfloatToPfloat_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fusedCopyDfloatToPfloat_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scaledAdd_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scaledAdd_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bda4af45d7556f4c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/bda4af45d7556f4c/binary
+Loading cached [copyPfloatToDfloat] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [7ac6b01bcc4b8f09/binary]
+Loading cached [copyPfloatToDfloat] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [a867ac0c42444f9d/binary]
+Loading cached [copyPfloatToDfloat] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [bda4af45d7556f4c/binary]
+Loading cached [dotMultiply] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [7ac6b01bcc4b8f09/binary]
+Loading cached [dotMultiply] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [a867ac0c42444f9d/binary]
+Loading cached [dotMultiply] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [bda4af45d7556f4c/binary]
+Loading cached [fusedCopyDfloatToPfloat] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [7ac6b01bcc4b8f09/binary]
+Loading cached [fusedCopyDfloatToPfloat] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [a867ac0c42444f9d/binary]
+Loading cached [fusedCopyDfloatToPfloat] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [bda4af45d7556f4c/binary]
+Loading cached [scaledAdd] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [7ac6b01bcc4b8f09/binary]
+Loading cached [scaledAdd] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [a867ac0c42444f9d/binary]
+Loading cached [scaledAdd] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticLinAlg.okl] in [bda4af45d7556f4c/binary]
+Compiling [ellipticPreconCoarsenHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/e50af1ce19e1d0a6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/e50af1ce19e1d0a6/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPreconCoarsenHex3D_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPreconCoarsenHex3D_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 36 registers, 256 bytes smem, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/e50af1ce19e1d0a6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/e50af1ce19e1d0a6/binary
+Compiling [ellipticPreconCoarsenHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd9e31098dd39dcf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd9e31098dd39dcf/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPreconCoarsenHex3D_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPreconCoarsenHex3D_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 62 registers, 1024 bytes smem, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd9e31098dd39dcf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/dd9e31098dd39dcf/binary
+Compiling [ellipticPreconProlongateHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d691b524fc1b1b37/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d691b524fc1b1b37/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPreconProlongateHex3D_3_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPreconProlongateHex3D_3_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 160 bytes smem, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d691b524fc1b1b37/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d691b524fc1b1b37/binary
+Compiling [ellipticPreconProlongateHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee0575e36829565e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee0575e36829565e/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticPreconProlongateHex3D_7_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticPreconProlongateHex3D_7_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 640 bytes smem, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee0575e36829565e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee0575e36829565e/binary
+Compiling [accumulate]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0dcb111495735fab/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0dcb111495735fab/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_multiWeightedInnerProduct2_0' for 'sm_75'
+ptxas info    : Function properties for _occa_multiWeightedInnerProduct2_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 30 registers, 2048 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_accumulate_0' for 'sm_75'
+ptxas info    : Function properties for _occa_accumulate_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_multiScaledAddwOffset_0' for 'sm_75'
+ptxas info    : Function properties for _occa_multiScaledAddwOffset_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scalarMultiply_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scalarMultiply_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0dcb111495735fab/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0dcb111495735fab/binary
+Loading cached [multiScaledAddwOffset] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticResidualProjection.okl] in [0dcb111495735fab/binary]
+Compiling [accumulate]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0fec296277ad0658/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0fec296277ad0658/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_multiWeightedInnerProduct2_0' for 'sm_75'
+ptxas info    : Function properties for _occa_multiWeightedInnerProduct2_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 2048 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_accumulate_0' for 'sm_75'
+ptxas info    : Function properties for _occa_accumulate_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_multiScaledAddwOffset_0' for 'sm_75'
+ptxas info    : Function properties for _occa_multiScaledAddwOffset_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 38 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scalarMultiply_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scalarMultiply_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0fec296277ad0658/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/0fec296277ad0658/binary
+Loading cached [multiScaledAddwOffset] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticResidualProjection.okl] in [0fec296277ad0658/binary]
+Compiling [fusedFDM]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/62b1a48a707372d6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/62b1a48a707372d6/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_fusedFDM_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fusedFDM_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 46 registers, 896 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_postFDM_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_postFDM_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 28 registers, 512 bytes smem, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_preFDM_3pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_preFDM_3pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 256 bytes smem, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/62b1a48a707372d6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/62b1a48a707372d6/binary
+Compiling [fusedFDM]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3857a828ca436a40/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3857a828ca436a40/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_fusedFDM_5pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fusedFDM_5pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 63 registers, 2592 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_postFDM_5pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_postFDM_5pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 34 registers, 1728 bytes smem, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_preFDM_5pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_preFDM_5pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 864 bytes smem, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3857a828ca436a40/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3857a828ca436a40/binary
+Compiling [fusedFDM]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86e56d302433c888/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86e56d302433c888/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_fusedFDM_9pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fusedFDM_9pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 86 registers, 10400 bytes smem, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_postFDM_9pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_postFDM_9pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 49 registers, 8000 bytes smem, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_preFDM_9pfloat_0' for 'sm_75'
+ptxas info    : Function properties for _occa_preFDM_9pfloat_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 4000 bytes smem, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86e56d302433c888/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86e56d302433c888/binary
+Loading cached [postFDM] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticSchwarzSolverHex3D.okl] in [62b1a48a707372d6/binary]
+Loading cached [postFDM] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticSchwarzSolverHex3D.okl] in [3857a828ca436a40/binary]
+Loading cached [postFDM] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticSchwarzSolverHex3D.okl] in [86e56d302433c888/binary]
+Loading cached [preFDM] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticSchwarzSolverHex3D.okl] in [62b1a48a707372d6/binary]
+Loading cached [preFDM] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticSchwarzSolverHex3D.okl] in [3857a828ca436a40/binary]
+Loading cached [preFDM] from [/home/user/NekRS/21.1/nekRS/okl/elliptic/ellipticSchwarzSolverHex3D.okl] in [86e56d302433c888/binary]
+Compiling [ellipticBlockUpdatePCG]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/91c748c1a57cd417/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/91c748c1a57cd417/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticBlockUpdatePCG_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockUpdatePCG_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 2048 bytes smem, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/91c748c1a57cd417/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/91c748c1a57cd417/binary
+Compiling [ellipticBlockUpdatePCG]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ef8d63035fdd3a9f/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ef8d63035fdd3a9f/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_ellipticBlockUpdatePCG_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ellipticBlockUpdatePCG_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 34 registers, 2048 bytes smem, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ef8d63035fdd3a9f/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ef8d63035fdd3a9f/binary
+Compiling [updatePGMRESSolution]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/65c82b186b6e9f8a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/65c82b186b6e9f8a/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_updatePGMRESSolution_0' for 'sm_75'
+ptxas info    : Function properties for _occa_updatePGMRESSolution_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/65c82b186b6e9f8a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/65c82b186b6e9f8a/binary
+Compiling [ady]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9b15d393195b2a87/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9b15d393195b2a87/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_axdyz_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axdyz_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 21 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_aydxMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_aydxMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 34 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_aydx_0' for 'sm_75'
+ptxas info    : Function properties for _occa_aydx_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axdy_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axdy_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 22 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_adyMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_adyMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 29 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_ady_0' for 'sm_75'
+ptxas info    : Function properties for _occa_ady_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 23 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9b15d393195b2a87/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9b15d393195b2a87/binary
+Loading cached [adyMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXDY.okl] in [9b15d393195b2a87/binary]
+Loading cached [axdy] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXDY.okl] in [9b15d393195b2a87/binary]
+Loading cached [axdyz] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXDY.okl] in [9b15d393195b2a87/binary]
+Loading cached [aydx] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXDY.okl] in [9b15d393195b2a87/binary]
+Loading cached [aydxMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXDY.okl] in [9b15d393195b2a87/binary]
+Compiling [axmy]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fb081bd26fec1e16/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fb081bd26fec1e16/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_axmyzMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axmyzMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axmyz_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axmyz_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axmyVector_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axmyVector_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axmyMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axmyMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 30 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axmy_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axmy_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fb081bd26fec1e16/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fb081bd26fec1e16/binary
+Loading cached [axmyMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXMY.okl] in [fb081bd26fec1e16/binary]
+Loading cached [axmyVector] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXMY.okl] in [fb081bd26fec1e16/binary]
+Loading cached [axmyz] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXMY.okl] in [fb081bd26fec1e16/binary]
+Loading cached [axmyzMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXMY.okl] in [fb081bd26fec1e16/binary]
+Compiling [axpby]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a4f85eb1482f3076/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a4f85eb1482f3076/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_axpbyzMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axpbyzMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axpbyz_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axpbyz_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axpbyMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axpbyMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_axpby_0' for 'sm_75'
+ptxas info    : Function properties for _occa_axpby_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a4f85eb1482f3076/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a4f85eb1482f3076/binary
+Loading cached [axpbyMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXPBY.okl] in [a4f85eb1482f3076/binary]
+Loading cached [axpbyz] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXPBY.okl] in [a4f85eb1482f3076/binary]
+Loading cached [axpbyzMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgAXPBY.okl] in [a4f85eb1482f3076/binary]
+Compiling [vabs]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee59c086fa731168/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee59c086fa731168/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_vabs_0' for 'sm_75'
+ptxas info    : Function properties for _occa_vabs_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 368 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee59c086fa731168/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ee59c086fa731168/binary
+Compiling [add]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/06ef0ca342342003/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/06ef0ca342342003/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_add_0' for 'sm_75'
+ptxas info    : Function properties for _occa_add_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/06ef0ca342342003/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/06ef0ca342342003/binary
+Compiling [fill]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/78f646cb48d8966e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/78f646cb48d8966e/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_fill_0' for 'sm_75'
+ptxas info    : Function properties for _occa_fill_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/78f646cb48d8966e/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/78f646cb48d8966e/binary
+Compiling [innerProd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a9ed8aa91db56a3b/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a9ed8aa91db56a3b/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_innerProd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_innerProd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 2048 bytes smem, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a9ed8aa91db56a3b/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a9ed8aa91db56a3b/binary
+Compiling [max]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/38d23bb356e4024f/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/38d23bb356e4024f/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_max_0' for 'sm_75'
+ptxas info    : Function properties for _occa_max_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 2048 bytes smem, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/38d23bb356e4024f/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/38d23bb356e4024f/binary
+Compiling [min]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/09891904c17dad92/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/09891904c17dad92/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_min_0' for 'sm_75'
+ptxas info    : Function properties for _occa_min_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 12 registers, 2048 bytes smem, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/09891904c17dad92/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/09891904c17dad92/binary
+Compiling [norm1]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/58526b2816e748c2/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/58526b2816e748c2/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_norm1Many_0' for 'sm_75'
+ptxas info    : Function properties for _occa_norm1Many_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 38 registers, 2048 bytes smem, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_norm1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_norm1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 2048 bytes smem, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/58526b2816e748c2/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/58526b2816e748c2/binary
+Loading cached [norm1Many] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgNorm1.okl] in [58526b2816e748c2/binary]
+Compiling [norm2]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5883209a84a32336/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5883209a84a32336/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_norm2Many_0' for 'sm_75'
+ptxas info    : Function properties for _occa_norm2Many_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 38 registers, 2048 bytes smem, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_norm2_0' for 'sm_75'
+ptxas info    : Function properties for _occa_norm2_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 2048 bytes smem, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5883209a84a32336/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/5883209a84a32336/binary
+Loading cached [norm2Many] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgNorm2.okl] in [5883209a84a32336/binary]
+Compiling [scale]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/576ee68195c72ddb/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/576ee68195c72ddb/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_scaleMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scaleMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 20 registers, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_scale_0' for 'sm_75'
+ptxas info    : Function properties for _occa_scale_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 8 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/576ee68195c72ddb/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/576ee68195c72ddb/binary
+Loading cached [scaleMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgScale.okl] in [576ee68195c72ddb/binary]
+Compiling [sum]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3414c01826e5eba1/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3414c01826e5eba1/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_sumMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_sumMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 38 registers, 2048 bytes smem, 384 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_sum_0' for 'sm_75'
+ptxas info    : Function properties for _occa_sum_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 2048 bytes smem, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3414c01826e5eba1/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3414c01826e5eba1/binary
+Loading cached [sumMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgSum.okl] in [3414c01826e5eba1/binary]
+Compiling [weightedInnerProd]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ce53a8c2a63638d6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ce53a8c2a63638d6/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_weightedInnerProdMulti_0' for 'sm_75'
+ptxas info    : Function properties for _occa_weightedInnerProdMulti_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 2048 bytes smem, 408 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_weightedInnerProdMany_0' for 'sm_75'
+ptxas info    : Function properties for _occa_weightedInnerProdMany_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 2048 bytes smem, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_weightedInnerProd_0' for 'sm_75'
+ptxas info    : Function properties for _occa_weightedInnerProd_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 16 registers, 2048 bytes smem, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ce53a8c2a63638d6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ce53a8c2a63638d6/binary
+Loading cached [weightedInnerProdMany] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgWeightedInnerProd.okl] in [ce53a8c2a63638d6/binary]
+Loading cached [weightedInnerProdMulti] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgWeightedInnerProd.okl] in [ce53a8c2a63638d6/binary]
+Compiling [weightedNorm1]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a2e996c1527fa817/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a2e996c1527fa817/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_weightedNorm1Many_0' for 'sm_75'
+ptxas info    : Function properties for _occa_weightedNorm1Many_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 2048 bytes smem, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_weightedNorm1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_weightedNorm1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 2048 bytes smem, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a2e996c1527fa817/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a2e996c1527fa817/binary
+Loading cached [weightedNorm1Many] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgWeightedNorm1.okl] in [a2e996c1527fa817/binary]
+Compiling [weightedNorm2]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/664e151148c8349b/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/664e151148c8349b/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_weightedNorm2Many_0' for 'sm_75'
+ptxas info    : Function properties for _occa_weightedNorm2Many_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 54 registers, 2048 bytes smem, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_weightedNorm2_0' for 'sm_75'
+ptxas info    : Function properties for _occa_weightedNorm2_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 2048 bytes smem, 384 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/664e151148c8349b/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/664e151148c8349b/binary
+Loading cached [weightedNorm2Many] from [/home/user/NekRS/21.1/nekRS/okl/linAlg/linAlgWeightedNorm2.okl] in [664e151148c8349b/binary]
+Compiling [geometricFactorsHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7490ff665af75b26/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7490ff665af75b26/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_geometricFactorsHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_geometricFactorsHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 2112 bytes smem, 432 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7490ff665af75b26/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7490ff665af75b26/binary
+Compiling [surfaceGeometricFactorsHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86b76b190a80c904/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86b76b190a80c904/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_surfaceGeometricFactorsHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_surfaceGeometricFactorsHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 238 registers, 6208 bytes smem, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86b76b190a80c904/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/86b76b190a80c904/binary
+Compiling [velocityDirichletBCHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/620474a4d096c9a1/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/620474a4d096c9a1/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_velocityDirichletBCHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_velocityDirichletBCHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 392 bytes cmem[0], 72 bytes cmem[2]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/620474a4d096c9a1/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/620474a4d096c9a1/binary
+Compiling [UrstCubatureHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fe8c952efee5193c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fe8c952efee5193c/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_UrstHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_UrstHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_UrstCubatureHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_UrstCubatureHex3D_0
+    128 bytes stack frame, 256 bytes spill stores, 256 bytes spill loads
+ptxas info    : Used 255 registers, 13784 bytes smem, 440 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fe8c952efee5193c/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/fe8c952efee5193c/binary
+Loading cached [UrstHex3D] from [/home/user/NekRS/21.1/nekRS/okl/nrs/UrstHex3D.okl] in [fe8c952efee5193c/binary]
+Compiling [advectMeshVelocityHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3f697005c7947612/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3f697005c7947612/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_advectMeshVelocityHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_advectMeshVelocityHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 252 registers, 5120 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3f697005c7947612/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/3f697005c7947612/binary
+Compiling [strongAdvectionCubatureVolumeHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/97070a2ee513a93d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/97070a2ee513a93d/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_strongAdvectionCubatureVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_strongAdvectionCubatureVolumeHex3D_0
+    528 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 124 registers, 7480 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_strongAdvectionVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_strongAdvectionVolumeHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 126 registers, 2048 bytes smem, 408 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/97070a2ee513a93d/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/97070a2ee513a93d/binary
+Loading cached [strongAdvectionVolumeHex3D] from [/home/user/NekRS/21.1/nekRS/okl/nrs/advectionHex3D.okl] in [97070a2ee513a93d/binary]
+Compiling [cflHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d5821af19543dd53/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d5821af19543dd53/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_cflHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_cflHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 62 registers, 2112 bytes smem, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d5821af19543dd53/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d5821af19543dd53/binary
+Compiling [computeFaceCentroid]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/509efdaf1241de6a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/509efdaf1241de6a/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_computeFaceCentroid_0' for 'sm_75'
+ptxas info    : Function properties for _occa_computeFaceCentroid_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 32 registers, 6144 bytes smem, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/509efdaf1241de6a/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/509efdaf1241de6a/binary
+Compiling [computeFieldDotNormal]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/290aa156999fb6cf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/290aa156999fb6cf/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_computeFieldDotNormal_0' for 'sm_75'
+ptxas info    : Function properties for _occa_computeFieldDotNormal_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/290aa156999fb6cf/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/290aa156999fb6cf/binary
+Compiling [curlHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6c22e3d3bc924652/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6c22e3d3bc924652/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_curlHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_curlHex3D_0
+    24 bytes stack frame, 24 bytes spill stores, 24 bytes spill loads
+ptxas info    : Used 128 registers, 2048 bytes smem, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6c22e3d3bc924652/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6c22e3d3bc924652/binary
+Compiling [divergenceSurfaceTOMBOHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9a7990f51e207efa/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9a7990f51e207efa/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_divergenceSurfaceTOMBOHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_divergenceSurfaceTOMBOHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 58 registers, 1024 bytes smem, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_nrswDivergenceVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nrswDivergenceVolumeHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 70 registers, 2048 bytes smem, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_divergenceVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_divergenceVolumeHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 126 registers, 2048 bytes smem, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa___dummy___0' for 'sm_75'
+ptxas info    : Function properties for _occa___dummy___0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 4 registers, 356 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9a7990f51e207efa/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/9a7990f51e207efa/binary
+Loading cached [divergenceVolumeHex3D] from [/home/user/NekRS/21.1/nekRS/okl/nrs/divergenceHex3D.okl] in [9a7990f51e207efa/binary]
+Loading cached [nrswDivergenceVolumeHex3D] from [/home/user/NekRS/21.1/nekRS/okl/nrs/divergenceHex3D.okl] in [9a7990f51e207efa/binary]
+Compiling [multiExtrapolate]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/17ac0b881b366dd6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/17ac0b881b366dd6/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_extrapolate_0' for 'sm_75'
+ptxas info    : Function properties for _occa_extrapolate_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 392 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_multiExtrapolate_0' for 'sm_75'
+ptxas info    : Function properties for _occa_multiExtrapolate_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/17ac0b881b366dd6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/17ac0b881b366dd6/binary
+Compiling [gradientVolumeHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2b4e5a59b54bd8a4/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2b4e5a59b54bd8a4/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_nrswGradientVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_nrswGradientVolumeHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 90 registers, 5120 bytes smem, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_gradientVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_gradientVolumeHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 64 registers, 1024 bytes smem, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2b4e5a59b54bd8a4/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/2b4e5a59b54bd8a4/binary
+Loading cached [nrswGradientVolumeHex3D] from [/home/user/NekRS/21.1/nekRS/okl/nrs/gradientHex3D.okl] in [2b4e5a59b54bd8a4/binary]
+Compiling [pressureAddQtl]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/056219fbefa417bb/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/056219fbefa417bb/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_pressureAddQtl_0' for 'sm_75'
+ptxas info    : Function properties for _occa_pressureAddQtl_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/056219fbefa417bb/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/056219fbefa417bb/binary
+Compiling [pressureDirichletBCHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6cb44bf91c564a67/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6cb44bf91c564a67/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_pressureDirichletBCHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_pressureDirichletBCHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 456 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa___dummy___0' for 'sm_75'
+ptxas info    : Function properties for _occa___dummy___0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 4 registers, 356 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6cb44bf91c564a67/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/6cb44bf91c564a67/binary
+Compiling [pressureRhsTOMBOHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/103732f39815dc34/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/103732f39815dc34/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_pressureRhsTOMBOHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_pressureRhsTOMBOHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 36 registers, 408 bytes cmem[0], 8 bytes cmem[2]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/103732f39815dc34/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/103732f39815dc34/binary
+Compiling [pressureStressHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f2f95230f62b7ce1/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f2f95230f62b7ce1/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_pressureStressHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_pressureStressHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 98 registers, 2624 bytes smem, 416 bytes cmem[0], 8 bytes cmem[2]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f2f95230f62b7ce1/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f2f95230f62b7ce1/binary
+Compiling [filterRTHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7e3de22db8a3c926/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7e3de22db8a3c926/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_filterRTHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_filterRTHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 128 registers, 2048 bytes smem, 400 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7e3de22db8a3c926/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/7e3de22db8a3c926/binary
+Compiling [subCycleStrongCubatureVolumeHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f8bae804e44075ee/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f8bae804e44075ee/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_subCycleStrongVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_subCycleStrongVolumeHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 168 registers, 2048 bytes smem, 448 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_subCycleStrongCubatureVolumeHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_subCycleStrongCubatureVolumeHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 254 registers, 9592 bytes smem, 464 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f8bae804e44075ee/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f8bae804e44075ee/binary
+Loading cached [subCycleStrongVolumeHex3D] from [/home/user/NekRS/21.1/nekRS/okl/nrs/subCycleHex3D.okl] in [f8bae804e44075ee/binary]
+Compiling [subCycleERKUpdate]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/211eb252bd6262a9/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/211eb252bd6262a9/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_subCycleERKUpdate_0' for 'sm_75'
+ptxas info    : Function properties for _occa_subCycleERKUpdate_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 56 registers, 416 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_subCycleRK_0' for 'sm_75'
+ptxas info    : Function properties for _occa_subCycleRK_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 40 registers, 424 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_subCycleInitU0_0' for 'sm_75'
+ptxas info    : Function properties for _occa_subCycleInitU0_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 27 registers, 416 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/211eb252bd6262a9/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/211eb252bd6262a9/binary
+Loading cached [subCycleInitU0] from [/home/user/NekRS/21.1/nekRS/okl/nrs/subCycleRKUpdate.okl] in [211eb252bd6262a9/binary]
+Loading cached [subCycleRK] from [/home/user/NekRS/21.1/nekRS/okl/nrs/subCycleRKUpdate.okl] in [211eb252bd6262a9/binary]
+Compiling [sumMakef]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a61d517c8eb42ed6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a61d517c8eb42ed6/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_sumMakef_0' for 'sm_75'
+ptxas info    : Function properties for _occa_sumMakef_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 432 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a61d517c8eb42ed6/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/a61d517c8eb42ed6/binary
+Compiling [velocityDirichletBCHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c8fe46555c1fc539/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c8fe46555c1fc539/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_velocityDirichletBCHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_velocityDirichletBCHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 52 registers, 448 bytes cmem[0], 16 bytes cmem[2]
+ptxas info    : Compiling entry function '_occa_velocityNeumannBCHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_velocityNeumannBCHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 72 registers, 1536 bytes smem, 448 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa___dummy___0' for 'sm_75'
+ptxas info    : Function properties for _occa___dummy___0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 4 registers, 356 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c8fe46555c1fc539/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/c8fe46555c1fc539/binary
+Loading cached [velocityNeumannBCHex3D] from [/home/user/NekRS/21.1/nekRS/okl/nrs/velocityBCHex3D.okl] in [c8fe46555c1fc539/binary]
+Compiling [velocityRhsTOMBOHex3D]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ec03bce3c23f0355/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ec03bce3c23f0355/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_velocityRhsTOMBOHex3D_0' for 'sm_75'
+ptxas info    : Function properties for _occa_velocityRhsTOMBOHex3D_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 392 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ec03bce3c23f0355/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/ec03bce3c23f0355/binary
+Compiling [convertFP32ToFP64]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/34ec16e002b1a776/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/34ec16e002b1a776/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_convertFP32ToFP64_0' for 'sm_75'
+ptxas info    : Function properties for _occa_convertFP32ToFP64_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/34ec16e002b1a776/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/34ec16e002b1a776/binary
+Compiling [convertFP64ToFP32]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d119b305277a0789/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d119b305277a0789/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_convertFP64ToFP32_0' for 'sm_75'
+ptxas info    : Function properties for _occa_convertFP64ToFP32_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d119b305277a0789/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/d119b305277a0789/binary
+Compiling [vectorDotStar2]
+nvcc -O3 --fmad=true -arch=sm_75 -Xptxas -v -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu -c /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f0c8a4db1449b8e9/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f0c8a4db1449b8e9/ptx_binary.o
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_occa_vectorDotStar2_0' for 'sm_75'
+ptxas info    : Function properties for _occa_vectorDotStar2_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 14 registers, 400 bytes cmem[0]
+ptxas info    : Compiling entry function '_occa_vectorDotStar1_0' for 'sm_75'
+ptxas info    : Function properties for _occa_vectorDotStar1_0
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 10 registers, 376 bytes cmem[0]
+nvcc -O3 --fmad=true -arch=sm_75 -ptx -I/home/user/NekRS/21.1/nekRS/include -I/home/user/NekRS/21.1/nekRS/include -L/home/user/NekRS/21.1/nekRS/lib -locca -x cu /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f0c8a4db1449b8e9/source.cpp -o /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/cache/f0c8a4db1449b8e9/binary
+done (126.141s)
+
+
+Build successful.
