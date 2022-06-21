@@ -1,0 +1,421 @@
+No protocol specified
+                 __    ____  _____
+   ____   ___   / /__ / __ \/ ___/
+  / __ \ / _ \ / //_// /_/ /\__ \ 
+ / / / //  __// ,<  / _, _/___/ / 
+/_/ /_/ \___//_/|_|/_/ |_|/____/  v22.0.0 (no sha)
+
+COPYRIGHT (c) 2019-2022 UCHICAGO ARGONNE, LLC
+
+MPI tasks: 1
+
+reading par file ...
+
+using NEKRS_HOME: /home/user/NekRS/22.0/nekRS
+using NEKRS_CACHE_DIR: /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache
+using OCCA_CACHE_DIR: /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/occa/
+
+Initializing device 
+active occa mode: CUDA
+
+building udf ... 
+[100%] Built target UDF
+done (0.0335941s)
+skip building nekInterface (SIZE requires no update)
+loading nek ... 
+done
+loading kernels (this may take awhile) ...
+loading udf kernels ... done (4.6712e-05s)
+Ax: N=7 wordSize=64 GDOF/s=1.44347 GB/s=137.9 GFLOPS/s=239.171 bkMode=1 kernelVer=4
+Ax: N=7 wordSize=64 GDOF/s=1.44443 GB/s=137.991 GFLOPS/s=239.329 bkMode=1 kernelVer=0
+Ax: N=7 wordSize=32 GDOF/s=7.08827 GB/s=338.584 GFLOPS/s=1174.46 bkMode=1 kernelVer=6
+fdm: N=9 wordSize=32 GDOF/s=10.4263 GB/s=188.788 GFLOPS/s=1730.56 kernelVer=4
+Ax: N=3 wordSize=64 GDOF/s=1.31054 GB/s=198.814 GFLOPS/s=195.708 bkMode=1 kernelVer=2
+Ax: N=3 wordSize=32 GDOF/s=4.04861 GB/s=307.095 GFLOPS/s=604.593 bkMode=1 kernelVer=6
+fdm: N=5 wordSize=32 GDOF/s=8.58772 GB/s=207.754 GFLOPS/s=1083.29 kernelVer=1
+done (5.28127s)
+
+ Reading /home/user/NekRS/usr_problems/turbTest_pressureTest/turbTest_sweep_small.re2                                                        
+ reading mesh 
+ reading boundary faces       1620 for ifield   1
+ done :: read .re2 file    0.26E-01 sec
+
+Running parCon ... (tol=0.02)
+Running parRSB ...
+parRSB finished in 0.000235948 s
+
+ reading mesh 
+ reading curved sides         3024
+ reading boundary faces       1620 for ifield   1
+ done :: read .re2 file    0.28E-01 sec
+
+ setup mesh topology
+   Right-handed check complete for        3402 elements. OK.
+gs_setup: 0 unique labels shared
+   handle bytes (avg, min, max): 1.08966e+07 10896588 10896588
+   buffer bytes (avg, min, max): 0 0 0
+   setupds time 1.4925E-01 seconds   0  8      472270        3402
+ 
+ 
+ max multiplicity           10
+ done :: setup mesh topology
+  
+ call usrdat
+ done :: usrdat
+
+ generate geometry data
+ done :: generate geometry data
+  
+ call usrdat2
+ done :: usrdat2
+
+  3.5439E-18  3.5491E-18  3.9364E-17  2.4362E-18  1.8144E-18  3.9364E-17 xyz repair 1
+  3.5436E-18  3.5491E-18  2.8922E-17  8.3601E-18  6.1125E-18  5.3553E-17 xyz repair 2
+  3.4694E-18  3.4694E-18  2.7756E-17  5.2417E-18  4.7988E-18  3.4079E-17 xyz repair 3
+  6.8439E-19  6.8301E-19  6.9389E-18  6.8439E-19  6.8301E-19  6.9389E-18 xyz repair 4
+ regenerate geometry data           1
+ done :: regenerate geometry data           1
+  
+ regenerate geometry data           1
+ done :: regenerate geometry data           1
+  
+ verify mesh topology
+  -1.4750000000000010E-002   1.4750000000000001E-002  Xrange
+  -1.4750000000000011E-002   1.4750000000000008E-002  Yrange
+ -0.12500000000000000       0.12500000000000000       Zrange
+ done :: verify mesh topology
+  
+ mesh metrics:
+ GLL grid spacing min/max    : 1.45E-04 1.09E-03
+ scaled Jacobian  min/max/avg: 3.72E-01 8.72E-01 6.51E-01
+ aspect ratio     min/max/avg: 1.18E+00 1.77E+00 1.38E+00
+
+ call usrdat3
+ done :: usrdat3
+
+gridpoints unique/tot:       1207102      1741824
+dofs vel/pr:                 1207102      1207102
+ nek setup done in    1.1162E+00 s
+
+ set initial conditions
+ nekuic (1) for ifld            1
+ call nekuic for vel  
+ xyz min   -0.14750E-01 -0.14750E-01 -0.12500    
+ uvwpt min   0.0000       0.0000       0.0000       0.0000       0.0000    
+ PS min      0.0000       0.0000       0.0000      0.99000E+22
+ xyz max    0.14750E-01  0.14750E-01  0.12500    
+ uvwpt max   0.0000       0.0000       0.0000       0.0000       0.0000    
+ PS max      0.0000       0.0000       0.0000     -0.99000E+22
+ done :: set initial conditions
+  
+calling nek_userchk ...
+
+generating t-mesh ...
+loading mesh from nek ... NboundaryIDs: 3, NboundaryFaces: 20412 done (0.000170516s)
+N: 7, Nq: 8, cubNq: 11
+computing geometric factors ... J [2.23929e-09,1.14185e-08] done (0.558416s)
+meshParallelGatherScatterSetup N=7
+timing gs modes: 1.25e-04s 
+used config: local
+min 100% of the local elements are internal
+timing gs modes: 3.51e-04s 
+used config: local
+copying solution from nek
+calling udf_setup ... done
+copying solution to nek
+================ ELLIPTIC SETUP VELOCITY ================
+bID 1 -> bcType codedFixedValue
+bID 2 -> bcType zeroGradient
+bID 3 -> bcType zeroValue
+timing gs modes: 3.08e-04s 
+used config: local
+timing gs modes: 4.18e-03s 
+used config: local
+building Jacobi preconditioner ... done (0.00380937s)
+done (0.120465s)
+================ ELLIPTIC SETUP PRESSURE ================
+timing gs modes: 1.03e-04s 
+used config: local
+timing gs modes: 1.05e-03s 
+used config: local
+building MG preconditioner ... 
+=============BUILDING MULTIGRID LEVEL OF DEGREE 7==================
+timing gs modes: 6.96e-05s 
+used config: local
+timing gs modes: 2.42e-04s 
+used config: local
+timing gs modes: 1.18e-04s 
+used config: local
+timing gs modes: 5.39e-04s 
+used config: local
+estimating maxEigenvalue ... 1.47309 done (0.067364s)
+=============BUILDING MULTIGRID LEVEL OF DEGREE 3==================
+computing geometric factors ... J [2.23929e-09,1.14185e-08] done (0.0210103s)
+meshParallelGatherScatterSetup N=3
+done (0.000889182s)
+timing gs modes: 2.50e-05s 
+used config: local
+timing gs modes: 6.31e-05s 
+used config: local
+timing gs modes: 3.48e-05s 
+used config: local
+estimating maxEigenvalue ... 1.30609 done (0.00962511s)
+=============BUILDING MULTIGRID LEVEL OF DEGREE 1==================
+computing geometric factors ... J [2.23929e-09,1.14185e-08] done (0.00441357s)
+meshParallelGatherScatterSetup N=1
+done (0.000141635s)
+timing gs modes: 1.26e-05s 
+used config: local
+building full FEM matrix ... done.
+done (0.0270327s)
+Setting up coarse solver ...
+
+ Num MPI tasks = 1
+
+ Num OpenMP threads = 1
+
+
+BoomerAMG SETUP PARAMETERS:
+
+ Max levels = 25
+ Num levels = 5
+
+ Strength Threshold = 0.250000
+ Interpolation Truncation Factor = 0.000000
+ Maximum Row Sum Threshold for Dependency Weakening = 0.900000
+
+ Coarsening Type = PMIS 
+ measures are determined locally
+
+ Interpolation = extended+i interpolation
+
+Operator Matrix Information:
+
+             nonzero            entries/row          row sums
+lev    rows  entries sparse   min  max     avg      min         max
+======================================================================
+  0    4221    51499  0.003     7   23    12.2  -2.379e-07   6.702e-03
+  1    1589    53621  0.021    11   79    33.7  -2.310e-07   9.507e-03
+  2     275     8309  0.110    13   49    30.2  -1.651e-07   1.233e-02
+  3      31      339  0.353     7   13    10.9  -2.560e-08   1.626e-02
+  4       4       14  0.875     3    4     3.5  -7.600e-11   1.750e-02
+
+
+Interpolation Matrix Information:
+                    entries/row        min        max            row sums
+lev  rows x cols  min  max  avgW     weight      weight       min         max
+================================================================================
+  0  4221 x 1589    1    4   3.9   3.725e-02   1.000e+00   7.567e-01   1.000e+00
+  1  1589 x 275     1    4   4.0   1.700e-02   8.893e-01   4.297e-01   1.000e+00
+  2   275 x 31      1    4   3.9   1.597e-02   7.057e-01   2.663e-01   1.000e+00
+  3    31 x 4       1    3   2.0   4.507e-02   1.000e+00   2.445e-01   1.000e+00
+
+
+     Complexity:    grid = 1.449893
+                operator = 2.209402
+                memory = 2.565467
+
+
+
+
+BoomerAMG SOLVER PARAMETERS:
+
+  Maximum number of cycles:         1 
+  Stopping Tolerance:               0.000000e+00 
+  Cycle type (1 = V, 2 = W, etc.):  1
+
+  Relaxation Parameters:
+   Visiting Grid:                     down   up  coarse
+            Number of sweeps:            1    1     1 
+   Type 0=Jac, 3=hGS, 6=hSGS, 9=GE:     16   16     9 
+   Point types, partial sweeps (1=C, -1=F):
+                  Pre-CG relaxation (down):   0
+                   Post-CG relaxation (up):   0
+                             Coarsest grid:   0
+
+done (0.022982s)
+---------------------------------------------------------
+level|    Type    |                 |     Smoother      |
+     |            |                 |                   |
+---------------------------------------------------------
+   0 |    pMG     |   Matrix-free   | Chebyshev+Schwarz |
+     |            |     Degree  7   |                   |
+   1 |    pMG     |   Matrix-free   | Chebyshev+Schwarz |
+     |            |     Degree  3   |                   |
+   2 |    AMG     |   Matrix        | BoomerAMG         |
+     |            |     Degree  1   |                   |
+---------------------------------------------------------
+done (4.53343s)
+done (5.20646s)
+
+settings:
+
+key: ADVECTION,                                               value: TRUE
+key: ADVECTION TYPE,                                          value: CUBATURE+CONVECTIVE
+key: AMG SOLVER,                                              value: BOOMERAMG
+key: AMG SOLVER LOCATION,                                     value: CPU
+key: AMG SOLVER PRECISION,                                    value: FP64
+key: BUILD ONLY,                                              value: FALSE
+key: CASENAME,                                                value: turbTest
+key: CHECKPOINT OUTPUT MESH,                                  value: FALSE
+key: CI-MODE,                                                 value: 0
+key: CONSTANT FLOW RATE,                                      value: FALSE
+key: CUBATURE POLYNOMIAL DEGREE,                              value: 10
+key: DATA FILE,                                               value: /home/user/NekRS/usr_problems/turbTest_pressureTest/.cache/udf/udf.okl
+key: DENSITY,                                                 value: 9.970000e+02
+key: DEVICE NUMBER,                                           value: LOCAL-RANK
+key: DT,                                                      value: 7.000000e-05
+key: ELEMENT MAP,                                             value: ISOPARAMETRIC
+key: ELEMENT TYPE,                                            value: 12
+key: ELLIPTIC INTEGRATION,                                    value: NODAL
+key: ENABLE FLOATCOMMHALF GS SUPPORT,                         value: FALSE
+key: FORMAT,                                                  value: 1.0
+key: GS OVERLAP,                                              value: TRUE
+key: MESH BASIS,                                              value: NODAL
+key: MESH CONNECTIVITY TOL,                                   value: 0.02
+key: MESH DIMENSION,                                          value: 3
+key: MESH DISCRETIZATION,                                     value: CONTINUOUS
+key: MESH FILE,                                               value: turbTest_sweep_small.re2
+key: MESH INTEGRATION ORDER,                                  value: 3
+key: MESH KRYLOV SOLVER,                                      value: PCG
+key: MESH PRECONDITIONER,                                     value: JACOBI
+key: MOVING MESH,                                             value: FALSE
+key: NEK USR FILE,                                            value: turbTest.usr
+key: NUMBER OF SCALARS,                                       value: 0
+key: NUMBER TIMESTEPS,                                        value: 30000
+key: PARALMOND SMOOTH COARSEST,                               value: FALSE
+key: PLATFORM NUMBER,                                         value: 0
+key: POLYNOMIAL DEGREE,                                       value: 7
+key: PRESSURE BASIS,                                          value: NODAL
+key: PRESSURE DISCRETIZATION,                                 value: CONTINUOUS
+key: PRESSURE INITIAL GUESS,                                  value: PROJECTION-ACONJ
+key: PRESSURE KRYLOV SOLVER,                                  value: PGMRES+FLEXIBLE
+key: PRESSURE MAXIMUM ITERATIONS,                             value: 200
+key: PRESSURE MULTIGRID CHEBYSHEV DEGREE,                     value: 2
+key: PRESSURE MULTIGRID CHEBYSHEV MAX EIGENVALUE BOUND FACTOR,value: 1.1
+key: PRESSURE MULTIGRID CHEBYSHEV MIN EIGENVALUE BOUND FACTOR,value: 0.1
+key: PRESSURE MULTIGRID COARSE SEMFEM,                        value: FALSE
+key: PRESSURE MULTIGRID COARSE SOLVE,                         value: TRUE
+key: PRESSURE MULTIGRID DOWNWARD SMOOTHER,                    value: ASM
+key: PRESSURE MULTIGRID SMOOTHER,                             value: CHEBYSHEV+ASM
+key: PRESSURE MULTIGRID UPWARD SMOOTHER,                      value: ASM
+key: PRESSURE PARALMOND CYCLE,                                value: VCYCLE
+key: PRESSURE PRECONDITIONER,                                 value: MULTIGRID
+key: PRESSURE RESIDUAL PROJECTION START,                      value: 5
+key: PRESSURE RESIDUAL PROJECTION VECTORS,                    value: 10
+key: PRESSURE SOLVER TOLERANCE,                               value: 1.000000e-04
+key: REGULARIZATION METHOD,                                   value: NONE
+key: RESTART FROM FILE,                                       value: 0
+key: SCALAR MAXIMUM ITERATIONS,                               value: 200
+key: SOLUTION OUTPUT CONTROL,                                 value: STEPS
+key: SOLUTION OUTPUT INTERVAL,                                value: 1500.000000
+key: START TIME,                                              value: 0.000000e+00
+key: STRESSFORMULATION,                                       value: FALSE
+key: SUBCYCLING STEPS,                                        value: 0
+key: SUBCYCLING TIME ORDER,                                   value: 4
+key: SUBCYCLING TIME STAGE NUMBER,                            value: 4
+key: THREAD MODEL,                                            value: CUDA
+key: TIME INTEGRATOR,                                         value: TOMBO2
+key: UDF FILE,                                                value: turbTest.udf
+key: UDF OKL FILE,                                            value: turbTest.oudf
+key: VARIABLE DT,                                             value: FALSE
+key: VELOCITY BASIS,                                          value: NODAL
+key: VELOCITY BLOCK SOLVER,                                   value: TRUE
+key: VELOCITY COEFF FIELD,                                    value: TRUE
+key: VELOCITY DISCRETIZATION,                                 value: CONTINUOUS
+key: VELOCITY KRYLOV SOLVER,                                  value: PCG
+key: VELOCITY MAXIMUM ITERATIONS,                             value: 200
+key: VELOCITY PRECONDITIONER,                                 value: JACOBI
+key: VELOCITY REGULARIZATION METHOD,                          value: NONE
+key: VELOCITY SOLVER TOLERANCE,                               value: 1.000000e-06
+key: VERBOSE,                                                 value: FALSE
+key: VISCOSITY,                                               value: 1.000000e-03
+
+occa memory usage: 2.66477 GB
+initialization took 13.8855 s
+
+timestepping for 30000 steps ...
+  P        : iter 200  resNorm0 7.84e+00  resNorm 5.73e-01
+  UVW      : iter 002  resNorm0 9.94e-02  resNorm 3.66e-07  divErrNorms 1.46e+00 5.83e+01
+step= 1  t= 7.00000000e-05  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.57e+00s  elapsedStepSum= 2.57350e+00s
+  P        : iter 200  resNorm0 1.51e+01  resNorm 5.07e-01
+  UVW      : iter 002  resNorm0 2.53e-01  resNorm 4.49e-07  divErrNorms 1.46e+00 5.66e+01
+step= 2  t= 1.40000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.54e+00s  elapsedStepSum= 5.11055e+00s
+  P        : iter 200  resNorm0 5.88e+00  resNorm 3.89e-01
+  UVW      : iter 002  resNorm0 2.41e-01  resNorm 4.28e-07  divErrNorms 1.46e+00 5.57e+01
+step= 3  t= 2.10000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.54e+00s  elapsedStepSum= 7.65251e+00s
+  P        : iter 200  resNorm0 1.18e+00  resNorm 5.63e-01
+  UVW      : iter 002  resNorm0 2.49e-01  resNorm 4.38e-07  divErrNorms 1.46e+00 5.45e+01
+step= 4  t= 2.80000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.55e+00s  elapsedStepSum= 1.02030e+01s
+  P        : iter 200  resNorm0 8.19e-01  resNorm 7.08e-01
+  UVW      : iter 002  resNorm0 2.49e-01  resNorm 4.40e-07  divErrNorms 1.45e+00 5.33e+01
+step= 5  t= 3.50000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.56e+00s  elapsedStepSum= 1.27596e+01s
+  P        : iter 200  resNorm0 9.18e-01  resNorm 7.01e-01
+  UVW      : iter 002  resNorm0 2.48e-01  resNorm 4.50e-07  divErrNorms 1.45e+00 5.21e+01
+step= 6  t= 4.20000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.56e+00s  elapsedStepSum= 1.53189e+01s
+  projP    : resNorm0 7.53e-01  resNorm 3.68e+00  ratio = 2.044e-01  1/10
+  P        : iter 200  resNorm0 3.68e+00  resNorm 2.87e+00
+  UVW      : iter 002  resNorm0 4.00e-01  resNorm 8.77e-07  divErrNorms 1.45e+00 5.10e+01
+step= 7  t= 4.90000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.57e+00s  elapsedStepSum= 1.78852e+01s
+  projP    : resNorm0 3.06e+00  resNorm 4.70e+00  ratio = 6.512e-01  1/10
+  P        : iter 200  resNorm0 4.70e+00  resNorm 4.23e+00
+  UVW      : iter 002  resNorm0 3.74e-01  resNorm 8.04e-07  divErrNorms 1.45e+00 4.99e+01
+step= 8  t= 5.60000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.57e+00s  elapsedStepSum= 2.04583e+01s
+  projP    : resNorm0 3.89e+00  resNorm 4.98e+00  ratio = 7.818e-01  1/10
+  P        : iter 200  resNorm0 4.98e+00  resNorm 4.06e+00
+  UVW      : iter 002  resNorm0 4.04e-01  resNorm 8.69e-07  divErrNorms 1.44e+00 4.88e+01
+step= 9  t= 6.30000000e-04  dt=7.0e-05  C= 0.20  UVW: 2  P: 200  elapsedStep= 2.58e+00s  elapsedStepSum= 2.30352e+01s
+  projP    : resNorm0 4.53e+00  resNorm 5.04e+00  ratio = 8.981e-01  1/10
+  P        : iter 200  resNorm0 5.04e+00  resNorm 4.58e+00
+  UVW      : iter 003  resNorm0 4.69e-01  resNorm 4.12e-09  divErrNorms 1.44e+00 4.81e+01
+step= 10  t= 7.00000000e-04  dt=7.0e-05  C= 0.20  UVW: 3  P: 200  elapsedStep= 2.58e+00s  elapsedStepSum= 2.56193e+01s
+  projP    : resNorm0 4.23e+00  resNorm 7.66e+00  ratio = 5.520e-01  1/10
+  P        : iter 200  resNorm0 7.66e+00  resNorm 6.96e+00
+  UVW      : iter 003  resNorm0 5.74e-01  resNorm 4.84e-09  divErrNorms 1.44e+00 4.68e+01
+step= 11  t= 7.70000000e-04  dt=7.0e-05  C= 0.20  UVW: 3  P: 200  elapsedStep= 2.59e+00s  elapsedStepSum= 2.82057e+01s
+  projP    : resNorm0 7.32e+00  resNorm 9.43e+00  ratio = 7.764e-01  1/10
+  P        : iter 200  resNorm0 9.43e+00  resNorm 8.31e+00
+  UVW      : iter 003  resNorm0 8.44e-01  resNorm 7.03e-09  divErrNorms 1.44e+00 4.73e+01
+step= 12  t= 8.40000000e-04  dt=7.0e-05  C= 0.20  UVW: 3  P: 200  elapsedStep= 2.59e+00s  elapsedStepSum= 3.07951e+01s
+  projP    : resNorm0 8.67e+00  resNorm 1.45e+01  ratio = 5.997e-01  1/10
+  P        : iter 200  resNorm0 1.45e+01  resNorm 1.37e+01
+  UVW      : iter 003  resNorm0 1.13e+00  resNorm 9.91e-09  divErrNorms 1.44e+00 4.60e+01
+step= 13  t= 9.10000000e-04  dt=7.0e-05  C= 0.20  UVW: 3  P: 200  elapsedStep= 2.59e+00s  elapsedStepSum= 3.33865e+01s
+  projP    : resNorm0 1.35e+01  resNorm 2.38e+01  ratio = 5.685e-01  1/10
+  P        : iter 200  resNorm0 2.38e+01  resNorm 2.17e+01
+  UVW      : iter 003  resNorm0 2.05e+00  resNorm 1.70e-08  divErrNorms 1.43e+00 4.99e+01
+step= 14  t= 9.80000000e-04  dt=7.0e-05  C= 0.20  UVW: 3  P: 200  elapsedStep= 2.60e+00s  elapsedStepSum= 3.59836e+01s
+  projP    : resNorm0 2.30e+01  resNorm 4.39e+01  ratio = 5.227e-01  1/10
+  P        : iter 200  resNorm0 4.39e+01  resNorm 4.10e+01
+  UVW      : iter 003  resNorm0 3.95e+00  resNorm 3.39e-08  divErrNorms 1.43e+00 5.88e+01
+step= 15  t= 1.05000000e-03  dt=7.0e-05  C= 0.22  UVW: 3  P: 200  elapsedStep= 2.60e+00s  elapsedStepSum= 3.85839e+01s
+  projP    : resNorm0 4.24e+01  resNorm 8.28e+01  ratio = 5.116e-01  1/10
+  P        : iter 200  resNorm0 8.28e+01  resNorm 8.08e+01
+  UVW      : iter 003  resNorm0 7.76e+00  resNorm 6.50e-08  divErrNorms 1.43e+00 8.99e+01
+step= 16  t= 1.12000000e-03  dt=7.0e-05  C= 0.28  UVW: 3  P: 200  elapsedStep= 2.60e+00s  elapsedStepSum= 4.11860e+01s
+  projP    : resNorm0 8.54e+01  resNorm 1.49e+02  ratio = 5.722e-01  1/10
+  P        : iter 200  resNorm0 1.49e+02  resNorm 1.45e+02
+  UVW      : iter 003  resNorm0 1.43e+01  resNorm 1.21e-07  divErrNorms 1.43e+00 1.43e+02
+step= 17  t= 1.19000000e-03  dt=7.0e-05  C= 0.41  UVW: 3  P: 200  elapsedStep= 2.60e+00s  elapsedStepSum= 4.37888e+01s
+  projP    : resNorm0 1.52e+02  resNorm 7.19e+02  ratio = 2.111e-01  2/10
+  P        : iter 200  resNorm0 7.19e+02  resNorm 6.75e+02
+  UVW      : iter 003  resNorm0 5.79e+01  resNorm 4.98e-07  divErrNorms 1.43e+00 7.66e+02
+step= 18  t= 1.26000000e-03  dt=7.0e-05  C= 2.26  UVW: 3  P: 200  elapsedStep= 2.61e+00s  elapsedStepSum= 4.63955e+01s
+  projP    : resNorm0 7.06e+02  resNorm 2.71e+03  ratio = 2.603e-01  1/10
+  P        : iter 200  resNorm0 2.71e+03  resNorm 2.58e+03
+  UVW      : iter 004  resNorm0 2.49e+02  resNorm 9.25e-09  divErrNorms 1.41e+00 3.01e+03
+step= 19  t= 1.33000000e-03  dt=7.0e-05  C= 9.14  UVW: 4  P: 200  elapsedStep= 2.61e+00s  elapsedStepSum= 4.90088e+01s
+  projP    : resNorm0 2.86e+03  resNorm 9.59e+03  ratio = 2.978e-01  1/10
+  P        : iter 200  resNorm0 9.59e+03  resNorm 9.28e+03
+  UVW      : iter 004  resNorm0 8.85e+02  resNorm 3.60e-08  divErrNorms 1.42e+00 1.20e+04
+step= 20  t= 1.40000000e-03  dt=7.0e-05  C= 57.10  UVW: 4  P: 200  elapsedStep= 2.61e+00s  elapsedStepSum= 5.16235e+01s
+Unreasonable CFL! Dying ...
+
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
