@@ -4,16 +4,35 @@
 #include <math.h>
 #include "udf.hpp"
 
+static dfloat R_PIPE;
+static dfloat Q_INFLOW;
+static dfloat P_OUTLET;
+static dfloat C_X0;
+static dfloat C_Y0;
+static dfloat PI;
+
 void UDF_ExecuteStep(nrs_t *nrs, dfloat time, int tstep)
 {
 }
 
 void UDF_LoadKernels(occa::properties& kernelInfo)
 {
+	kernelInfo["defines/rPipe"]		= R_PIPE;
+	kernelInfo["defines/qInflow"]	= Q_INFLOW;
+	kernelInfo["defines/pOutlet"]	= P_OUTLET;
+	kernelInfo["defines/c_x0"]		= C_X0;
+	kernelInfo["defines/c_y0"]		= C_Y0;
+	kernelInfo["defines/pi"]		= PI;
 }
 
 void UDF_Setup0(MPI_Comm comm, setupAide &options)
 {
+	platform->par->extract("casedata","r_pipe",R_PIPE);
+	platform->par->extract("casedata","q_inflow",Q_INFLOW);
+	platform->par->extract("casedata","p_outlet",P_OUTLET);
+	C_X0 = 0.;
+	C_Y0 = 0.;
+	PI = 3.14159265359;
 }
 
 // set initial conditions (velocity and pressure)
@@ -22,9 +41,12 @@ void UDF_Setup(nrs_t* nrs)
 	mesh_t* mesh = nrs->meshV;
 	int num_quadrature_points = mesh->Np * mesh->Nelements;
 
-	const double r_pipe = 0.01475;		// pipe radius, m
-	const double c_x0 = 0;			// inlet x centre position, m
-	const double c_y0 = 0;			// inlet y centre position, m
+	// printf("\nUDF: R_PIPE = %e\n", R_PIPE);
+	// printf("\nUDF: Q_INFLOW = %e\n", Q_INFLOW);
+	// printf("\nUDF: P_OUTLET = %e\n", P_OUTLET);
+	// printf("\nUDF: C_X0 = %e\n", C_X0);
+	// printf("\nUDF: C_Y0 = %e\n", C_Y0);
+	// printf("\nUDF: PI = %e\n", PI);
 
 	for (int n = 0; n < num_quadrature_points; n++) {
 		float x = mesh->x[n];
@@ -33,9 +55,11 @@ void UDF_Setup(nrs_t* nrs)
 
 		nrs->U[n + 0 * nrs->fieldOffset] = 0;
 		nrs->U[n + 1 * nrs->fieldOffset] = 0;
-		nrs->U[n + 2 * nrs->fieldOffset] = -1.0e-15;
+		// nrs->U[n + 2 * nrs->fieldOffset] = -1.0e-15;
 
-		nrs->P[n + 0 * nrs->fieldOffset] = 1.0e5;
+		nrs->U[n + 2 * nrs->fieldOffset] = -((2*Q_INFLOW)/(PI*R_PIPE*R_PIPE))*(1 - (( ((x-C_X0)*(x-C_X0))+((y-C_Y0)*(y-C_Y0)) )/(R_PIPE*R_PIPE)));	// calculate parabolic inflow profile
+
+		nrs->P[n + 0 * nrs->fieldOffset] = P_OUTLET;
 	}
 }
 

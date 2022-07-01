@@ -5,7 +5,7 @@ polynomialOrder = 7			# Order of polynomial trial functions for FE solution (?).
 stopAt = numSteps			# end after <numSteps> iterations
 numSteps = 30000				# number of iterations
 
-dt = 7e-5
+dt = 3e-6
 timeStepper = tombo2			#default: tombo2
 subCyclingSteps = 0			# subcycling steps allow for greater CFL: 0 (CFL<=0.5), 1 (0.5<CFL<=2), 2 (2<CFL<=4), 3 (4<CFL<=6) etc... every 2 CFL units requires extra subcycling step
 
@@ -28,3 +28,6 @@ density = 997.				# density of water
 residualTol = 1e-06
 
 [CASEDATA]
+r_pipe = 0.01475
+q_inflow = 5.e-3
+p_outlet = 1.0e5

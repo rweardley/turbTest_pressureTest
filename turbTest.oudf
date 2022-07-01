@@ -2,17 +2,24 @@
 
 void velocityDirichletConditions(bcData *bc)
 {
-	const dfloat R_inflow = 2.5e-4;
-	const dfloat r_pipe = 0.01475;		// pipe radius, m
-	const dfloat c_x0 = 0;			// inlet x centre position, m
-	const dfloat c_y0 = 0;			// inlet y centre position, m
+	// printf("\n0UDF: rPipe = %e\n", rPipe);
+	// printf("\n0UDF: qInflow = %e\n", qInflow);
+	// printf("\n0UDF: pOutlet = %e\n", pOutlet);
+	// printf("\n0UDF: c_x0 = %e\n", c_x0);
+	// printf("\n0UDF: c_y0 = %e\n", c_y0);
+	// printf("\n0UDF: pi = %e\n", pi);
+	
+	// const dfloat R_inflow = 2.5e-4;
+	// const dfloat r_pipe = 0.01475;		// pipe radius, m
+	// const dfloat c_x0 = 0;			// inlet x centre position, m
+	// const dfloat c_y0 = 0;			// inlet y centre position, m
 
 	bc->u = 0.0;
 	bc->v = 0.0;
-	bc->w = -((2*R_inflow)/(M_PI*r_pipe*r_pipe))*(1 - (( ((bc->x-c_x0)*(bc->x-c_x0))+((bc->y-c_y0)*(bc->y-c_y0)) )/(r_pipe*r_pipe)));	// calculate parabolic inflow profile
+	bc->w = -((2*qInflow)/(pi*rPipe*rPipe))*(1 - (( ((bc->x-c_x0)*(bc->x-c_x0))+((bc->y-c_y0)*(bc->y-c_y0)) )/(rPipe*rPipe)));	// calculate parabolic inflow profile
 }
 
 void pressureDirichletConditions(bcData *bc)
 {
-	bc->p = 1.0e5;		// atmospheric pressure BC at outlet
+	bc->p = pOutlet;		// atmospheric pressure BC at outlet
 }
