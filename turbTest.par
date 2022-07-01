@@ -30,4 +30,5 @@ residualTol = 1e-06
 [CASEDATA]
 r_pipe = 0.01475
 q_inflow = 5.e-3
+q_initial = 2.5e-4
 p_outlet = 1.0e5

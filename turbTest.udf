@@ -6,6 +6,7 @@
 
 static dfloat R_PIPE;
 static dfloat Q_INFLOW;
+static dfloat Q_INITIAL;
 static dfloat P_OUTLET;
 static dfloat C_X0;
 static dfloat C_Y0;
@@ -29,6 +30,7 @@ void UDF_Setup0(MPI_Comm comm, setupAide &options)
 {
 	platform->par->extract("casedata","r_pipe",R_PIPE);
 	platform->par->extract("casedata","q_inflow",Q_INFLOW);
+	platform->par->extract("casedata","q_initial",Q_INITIAL);
 	platform->par->extract("casedata","p_outlet",P_OUTLET);
 	C_X0 = 0.;
 	C_Y0 = 0.;
@@ -57,7 +59,7 @@ void UDF_Setup(nrs_t* nrs)
 		nrs->U[n + 1 * nrs->fieldOffset] = 0;
 		// nrs->U[n + 2 * nrs->fieldOffset] = -1.0e-15;
 
-		nrs->U[n + 2 * nrs->fieldOffset] = -((2*Q_INFLOW)/(PI*R_PIPE*R_PIPE))*(1 - (( ((x-C_X0)*(x-C_X0))+((y-C_Y0)*(y-C_Y0)) )/(R_PIPE*R_PIPE)));	// calculate parabolic inflow profile
+		nrs->U[n + 2 * nrs->fieldOffset] = -((2*Q_INITIAL)/(PI*R_PIPE*R_PIPE))*(1 - (( ((x-C_X0)*(x-C_X0))+((y-C_Y0)*(y-C_Y0)) )/(R_PIPE*R_PIPE)));	// calculate parabolic inflow profile
 
 		nrs->P[n + 0 * nrs->fieldOffset] = P_OUTLET;
 	}
